@@ -6,10 +6,10 @@ for (let i = 0; i < 16 * 16; i++) {
   div.appendChild(pixel);
 }
 const pixels = document.querySelectorAll(".pixel");
-addHover(pixels)
+addHover(pixels);
 const btnClear = document.querySelector("#btn-clear");
 btnClear.addEventListener("click", () => {
-	clear()
+  clear();
   let howManySquares;
   do {
     howManySquares = parseInt(
@@ -26,6 +26,23 @@ function addHover(p) {
   });
 }
 function clear() {
-	const pixels = document.querySelectorAll('.pixel')
-	pixels.forEach(p => p.style.background = 'white')
+  const pixels = document.querySelectorAll(".pixel");
+  pixels.forEach((p) => (p.style.background = "white"));
+}
+function createGrid(n) {
+  const div = document.createElement("div");
+  div.classList.add("container");
+  const body = document.querySelector("body");
+  body.appendChild(div);
+  const total = n * n;
+  div.style.cssText = `grid-template-columns: repeat(${n},1fr);grid-template-rows: repeat(${n},1fr)`;
+  for (let i = 0; i < total; i++) {
+    let p = document.createElement("div");
+    p.classList.add("pixel");
+    div.appendChild(p);
+  }
+}
+function removePixels() {
+  const p = document.querySelectorAll(".pixel");
+  p.forEach((p) => div.remove(p));
 }

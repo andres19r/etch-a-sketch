@@ -10,12 +10,9 @@ body {
 	height: 960px; */
 	margin: 10px auto;
 	display: grid;
-	grid-template-columns: repeat(16,1fr);
-	grid-template-rows: repeat(16,1fr);
+	/* grid-template-columns: repeat(16,1fr);
+	grid-template-rows: repeat(16,1fr); */
 }
 .pixel {
 	border: 1px solid gray;
 }
-/* .pixel:hover {
-	background-color: black;
-} */
