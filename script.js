@@ -1,29 +1,62 @@
 const btnNew = document.querySelector("#btn-new");
-const btnClear = document.querySelector('#btn-clear')
-createGrid(16)
+const btnClear = document.querySelector("#btn-clear");
+const btnRainbow = document.querySelector("#btn-rainbow");
+const btnBlack = document.querySelector("#btn-black");
+createGrid(16);
 const pixels = document.querySelectorAll(".pixel");
-addHover(pixels);
+addHover(pixels, "black");
 
 btnNew.addEventListener("click", () => {
   clear();
   let howManySquares;
   do {
     howManySquares = parseInt(
-      prompt("How many squares per side do you want? limit: 100")
+      prompt("How many squares per side do you want? limit: 64")
     );
   } while (howManySquares > 64);
-  removePixels()
-  createGrid(howManySquares)
+  removePixels();
+  createGrid(howManySquares);
 });
 
-btnClear.addEventListener('click', () => {
-  clear()
-})
+btnClear.addEventListener("click", () => {
+  clear();
+});
 
-function addHover(p) {
+btnRainbow.addEventListener("click", () => {
+  const p = document.querySelectorAll(".pixel");
   p.forEach((pixel) => {
     pixel.addEventListener("mouseover", () => {
-      pixel.style.background = "black";
+      pixel.style.background = random_rgba();
+    });
+  });
+});
+
+btnBlack.addEventListener("click", () => {
+  const p = document.querySelectorAll(".pixel");
+  addHover(p, "black");
+});
+
+function random_rgba() {
+  let o = Math.round,
+    r = Math.random,
+    s = 255;
+  return (
+    "rgba(" +
+    o(r() * s) +
+    "," +
+    o(r() * s) +
+    "," +
+    o(r() * s) +
+    "," +
+    r().toFixed(1) +
+    ")"
+  );
+}
+
+function addHover(p, color) {
+  p.forEach((pixel) => {
+    pixel.addEventListener("mouseover", () => {
+      pixel.style.background = color;
     });
   });
 }
@@ -43,11 +76,11 @@ function createGrid(n) {
     p.classList.add("pixel");
     div.appendChild(p);
   }
-  const p = document.querySelectorAll('.pixel')
-  addHover(p)
+  const p = document.querySelectorAll(".pixel");
+  addHover(p, "black");
 }
 function removePixels() {
-  const div = document.querySelector('.container')
+  const div = document.querySelector(".container");
   const p = document.querySelectorAll(".pixel");
   p.forEach((p) => div.remove(p));
 }

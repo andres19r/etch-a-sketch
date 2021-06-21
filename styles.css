@@ -5,14 +5,17 @@ body {
 .container {
 	border: 1px solid black;
 	width: 50%;
-	height: 90vh;
+	height: 80vh;
 	/* width: 960px;
 	height: 960px; */
-	margin: 10px auto;
+	margin: 0 auto;
 	display: grid;
 	/* grid-template-columns: repeat(16,1fr);
 	grid-template-rows: repeat(16,1fr); */
 }
 .pixel {
 	border: 1px solid gray;
+}
+h1 {
+	text-align: center;
 }
