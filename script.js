@@ -1,14 +1,10 @@
-const div = document.querySelector(".container");
-
-for (let i = 0; i < 16 * 16; i++) {
-  let pixel = document.createElement("div");
-  pixel.classList.add("pixel");
-  div.appendChild(pixel);
-}
+const btnNew = document.querySelector("#btn-new");
+const btnClear = document.querySelector('#btn-clear')
+createGrid(16)
 const pixels = document.querySelectorAll(".pixel");
 addHover(pixels);
-const btnClear = document.querySelector("#btn-clear");
-btnClear.addEventListener("click", () => {
+
+btnNew.addEventListener("click", () => {
   clear();
   let howManySquares;
   do {
@@ -16,7 +12,13 @@ btnClear.addEventListener("click", () => {
       prompt("How many squares per side do you want? limit: 100")
     );
   } while (howManySquares > 64);
+  removePixels()
+  createGrid(howManySquares)
 });
+
+btnClear.addEventListener('click', () => {
+  clear()
+})
 
 function addHover(p) {
   p.forEach((pixel) => {
@@ -41,8 +43,11 @@ function createGrid(n) {
     p.classList.add("pixel");
     div.appendChild(p);
   }
+  const p = document.querySelectorAll('.pixel')
+  addHover(p)
 }
 function removePixels() {
+  const div = document.querySelector('.container')
   const p = document.querySelectorAll(".pixel");
   p.forEach((p) => div.remove(p));
 }
